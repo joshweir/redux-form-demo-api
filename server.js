@@ -83,31 +83,6 @@ app.post('/forms', (req, res) => {
         res.status(500).send({ error: `An error has occurred ${err}` })
       );
   });
-  /*
-  db.collection('user_forms').findOne(query, (err, result) => {
-    if (err) {
-      res.status(500).send({ error: `An error has occurred ${err}` });
-    } else {
-      if (result) {
-        db.collection('user_forms').update(query, formData, (err, result) => {
-          if (err) {
-            res.status(500).send({ error: `An error has occurred ${err}` });
-          } else {
-            res.send(formData);
-          }
-        });
-      } else {
-        db.collection('user_forms').insert(formData, (err, result) => {
-          if (err) {
-            res.status(500).send({ error: `An error has occurred ${err}` });
-          } else {
-            res.send(formData);
-          }
-        });
-      }
-    }
-  });
-  */
 });
 
 app.get('/forms/:formName', (req, res) => {
@@ -141,7 +116,7 @@ app.get('/forms/:formName', (req, res) => {
           res.send(result);
         } else {
           const formData = newUserForm(formName, sessionId);
-          Form.insert(formData)
+          Form.create(formData)
             .then(() => res.send(formData))
             .catch(err =>
               res.status(500).send({ error: `An error has occurred ${err}` })
@@ -152,26 +127,6 @@ app.get('/forms/:formName', (req, res) => {
         res.status(500).send({ error: `An error has occurred ${err}` })
       );
   });
-  /*
-  db.collection('user_forms').findOne(query, (err, result) => {
-    if (err) {
-      res.status(500).send({ error: `An error has occurred ${err}` });
-    } else {
-      if (result) {
-        res.send(result);
-      } else {
-        const formData = newUserForm(formName, sessionId);
-        db.collection('user_forms').insert(formData, (err, result) => {
-          if (err) {
-            res.status(500).send({ error: `An error has occurred ${err}` });
-          } else {
-            res.send(formData);
-          }
-        });
-      }
-    }
-  });
-  */
 });
 
 app.delete('/forms/:formName', (req, res) => {
@@ -191,28 +146,9 @@ app.delete('/forms/:formName', (req, res) => {
         res.status(500).send({ error: `An error has occurred ${err}` })
       );
   });
-  /*
-  db.collection('user_forms').remove(query, (err, result) => {
-    if (err) {
-      res.status(500).send({ error: `An error has occurred ${err}` });
-    } else {
-      res.send('ok: ' + result);
-    }
-  });
-  */
 });
 
-/*
-MongoClient.connect(
-  process.env.MONGODB_URI,
-  (err, database) => {
-    if (err) return console.log(err);
-    db = database.db('redux-form-demo');
-    require('./app/routes')(app, db);
-    app.listen(port, () => {
-      console.log('Listening on ' + port);
-    });
-  }
-);
-*/
+// app.listen(port, () => {
+//   console.log('Listening on ' + port);
+// });
 module.exports = app;
