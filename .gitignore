@@ -1,20 +1,9 @@
-*.csv
-*.dat
-*.iml
-*.log
-*.out
-*.pid
-*.seed
-*.sublime-*
-*.swo
-*.swp
-*.tgz
-*.xml
-.DS_Store
-.idea
-.project
-.strong-pm
-coverage
+# package directories
 node_modules
-npm-debug.log
-config/db.js
+jspm_packages
+
+# Serverless directories
+.serverless
+
+.env
+*.log

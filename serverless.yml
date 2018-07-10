@@ -1,0 +1,35 @@
+service: redux-form-demo-api
+provider:
+  name: aws
+  runtime: nodejs8.10 # set node.js runtime
+  memorySize: 128 # set the maximum memory of the Lambdas in Megabytes
+  timeout: 10 # the timeout is 10 seconds (default is 6 seconds)
+  stage: dev # setting the env stage to dev, this will be visible in the routes
+  region: us-east-1
+
+# functions: 
+#   createForm:
+#     handler: handler.createForm
+#     events:
+#       - http:
+#           path: forms # path will be domain.name.com/dev/notes
+#           method: post
+#           cors: true
+#   getForm:
+#     handler: handler.getForm
+#     events:
+#       - http:
+#           path: forms/{formName} # path will be domain.name.com/dev/notes/1
+#           method: get
+#           cors: true
+#   deleteForm:
+#     handler: handler.deleteForm
+#     events:
+#      - http:
+#          path: forms/{formName} # path will be domain.name.com/dev/notes/1
+#          method: delete
+#          cors: true
+
+plugins:
+- serverless-express
+- serverless-offline # adding the plugin to be able to run the offline emulation
